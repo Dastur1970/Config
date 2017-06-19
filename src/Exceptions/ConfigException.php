@@ -2,35 +2,27 @@
 /**
  * PHP version 5.6
  *
- * @category Loaders
+ * @category Exceptions
  * @package  Config
  * @author   Dastur1970 <dastur1970@gmail.com>
  * @license  https://github.com/Dastur1970/Config/blob/master/LICENSE MIT License
  * @link     https://github.com/Dastur1970/Config
  */
 
-namespace Dastur\Config\Loaders;
+namespace Dastur\Config\Exceptions;
+
+use Exception;
 
 /**
- * The php loader class.
+ * A general configuration exception.
  *
- * @category Loaders
+ * @category Exceptions
  * @package  Config
  * @author   Dastur1970 <dastur1970@gmail.com>
  * @license  https://github.com/Dastur1970/Config/blob/master/LICENSE MIT License
  * @link     https://github.com/Dastur1970/Config/
  */
-class PhpLoader implements LoaderInterface
+class ConfigException extends Exception
 {
-    /**
-     * Get the items from a specific php file.
-     *
-     * @param string $filePath The path of the file being loaded.
-     *
-     * @return array The array of items.
-     */
-    public function getItems($filePath)
-    {
-        //
-    }
+    //
 }
