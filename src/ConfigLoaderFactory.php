@@ -39,7 +39,7 @@ class ConfigLoaderFactory
      *
      * @return Dastur\Config\ConfigLoader A config loader instance.
      */
-    public static function make($files, $cachePath, $usesCache)
+    public static function make($files, $cachePath = null, $usesCache = false)
     {
         return new ConfigLoader(
             $files,

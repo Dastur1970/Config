@@ -31,6 +31,6 @@ class IniLoader implements LoaderInterface
      */
     public function getItems($filePath)
     {
-        //
+        return parse_ini_file($filePath);
     }
 }

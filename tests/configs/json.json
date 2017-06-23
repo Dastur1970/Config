@@ -1,0 +1,14 @@
+{
+    "someConfig": "random123",
+    "name": "jsonConfig",
+    "someObjectConfig": {
+        "moreData": "data",
+        "evenMoreData": {
+            "item": "someItem",
+            "dontForget": "something",
+            "oneLastLayer": {
+                "toldYa": "yup",
+            }
+        }
+    }
+}

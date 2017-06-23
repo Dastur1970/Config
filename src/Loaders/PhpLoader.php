@@ -31,6 +31,6 @@ class PhpLoader implements LoaderInterface
      */
     public function getItems($filePath)
     {
-        //
+        return require($filePath);
     }
 }

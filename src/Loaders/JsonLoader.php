@@ -31,6 +31,6 @@ class JsonLoader implements LoaderInterface
      */
     public function getItems($filePath)
     {
-        //
+        $name = json_decode($filePath);
     }
 }

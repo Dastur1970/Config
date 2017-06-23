@@ -268,7 +268,8 @@ class ConfigLoader
                     . 'the file type is not supported'
                 );
             }
-            $values[$name] = $this->{$extension}->getItems();
+            echo $this->files;
+            $values[$name] = $this->{$extension}->getItems($file);
         }
         return $values;
     }

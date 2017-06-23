@@ -11,6 +11,8 @@
 
 namespace Dastur\Config\Loaders;
 
+use Symfony\Component\Yaml\Yaml;
+
 /**
  * The yaml loader class.
  *
@@ -31,6 +33,6 @@ class YamlLoader implements LoaderInterface
      */
     public function getItems($filePath)
     {
-        //
+        return Yaml::parse(file_get_contents($filePath));
     }
 }

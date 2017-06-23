@@ -22,6 +22,14 @@ namespace Dastur\Config;
  */
 class Config implements ConfigInterface
 {
+
+    /**
+     * The delimiter used when exploding a class.
+     *
+     * Value is '.'
+     */
+    const DELIMITER = '.';
+
     /**
      * The config values.
      *
@@ -49,7 +57,15 @@ class Config implements ConfigInterface
      */
     public function get($path, $default = null)
     {
-        //
+        $parts = $this->getParts($path);
+        $value = $this->values;
+        foreach ($parts as $part) {
+            if (! isset($value[$part])) {
+                return $defaut;
+            }
+            $value = $value[$part];
+        }
+        return $value;
     }
 
     /**
@@ -63,7 +79,16 @@ class Config implements ConfigInterface
      */
     public function set($path, $value)
     {
-        //
+        $parts = $this->getParts($path);
+        $values = $this->values;
+        while (count($parts) > 1) {
+            $part = array_shift($parts);
+            if (! isset($values[$part])) {
+                $values[$part] = [];
+            }
+            $values = $values[$part];
+        }
+        $values[array_shift($parts)] = $value;
     }
 
     /**
@@ -75,7 +100,16 @@ class Config implements ConfigInterface
      */
     public function has($path)
     {
-        //
+        $parts = $this->getParts($path);
+        $values = $this->values;
+        while (! empty($parts)) {
+            $part = array_shift($parts);
+            if (! isset($values[$part])) {
+                return false;
+            }
+            $values = $values[$part];
+        }
+        return true;
     }
 
     /**
@@ -86,5 +120,17 @@ class Config implements ConfigInterface
     public function all()
     {
         return $this->values;
+    }
+
+    /**
+     * Get the parts of the path.
+     *
+     * @param string $path The path getting exploded.
+     *
+     * @return array
+     */
+    protected function getParts($path)
+    {
+        return explode(static::DELIMITER, $path);
     }
 }

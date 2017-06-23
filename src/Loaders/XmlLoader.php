@@ -31,6 +31,9 @@ class XmlLoader implements LoaderInterface
      */
     public function getItems($filePath)
     {
-        //
+        return json_decode(
+            json_encode((array) simplexml_load_file($filePath)),
+            true
+        );
     }
 }
